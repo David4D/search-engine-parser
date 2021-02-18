@@ -23,7 +23,7 @@ class Search(BaseSearch):
         params = {}
         params["q"] = query
         params["s"] = 0 if (page < 2) else (((page-1) * 50) - 20)
-        params["dc"] = offset
+        # params["dc"] = offset
         params["o"] = "json"
         params["api"] = "d.js"
         return params
