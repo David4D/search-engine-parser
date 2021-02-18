@@ -12,8 +12,8 @@ from urllib.parse import urlencode, urlparse
 import aiohttp
 from bs4 import BeautifulSoup
 
-from search_engine_parser.core import utils
-from search_engine_parser.core.exceptions import NoResultsOrTrafficError
+from ..core import utils
+from ..core.exceptions import NoResultsOrTrafficError
 
 
 @unique
@@ -278,7 +278,8 @@ class BaseSearch:
         if page <= 0:
             page = 1
         # Get search Page Results
-        loop = asyncio.get_event_loop()
+        # loop = asyncio.get_event_loop()  # -> NO THREAD IN FLASK
+        loop = asyncio.new_event_loop()
         url = self.get_search_url(
                     query, page, **kwargs)
         soup = loop.run_until_complete(

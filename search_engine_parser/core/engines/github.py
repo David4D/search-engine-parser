@@ -1,8 +1,8 @@
 """@desc
 		Parser for GitHub search results
 """
-from search_engine_parser.core.base import BaseSearch, ReturnType, SearchItem
-from search_engine_parser.core.exceptions import IncorrectKeyWord
+from ..base import BaseSearch, ReturnType, SearchItem
+from ..exceptions import IncorrectKeyWord
 
 
 class Search(BaseSearch):

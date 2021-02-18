@@ -2,7 +2,7 @@
 		Parser for Yandex search results
 """
 
-from search_engine_parser.core.base import BaseSearch, ReturnType, SearchItem
+from ..base import BaseSearch, ReturnType, SearchItem
 
 
 class Search(BaseSearch):

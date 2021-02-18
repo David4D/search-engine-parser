@@ -3,7 +3,7 @@
 """
 import re
 
-from search_engine_parser.core.base import BaseSearch, ReturnType, SearchItem
+from ..base import BaseSearch, ReturnType, SearchItem
 
 
 class Search(BaseSearch):
@@ -23,7 +23,7 @@ class Search(BaseSearch):
         params = {}
         params["q"] = query
         params["s"] = 0 if (page < 2) else (((page-1) * 50) - 20)
-        # params["dc"] = offset
+        params["dc"] = offset
         params["o"] = "json"
         params["api"] = "d.js"
         return params
@@ -57,13 +57,16 @@ class Search(BaseSearch):
             link = None
             link_tag = single_result.find('a', class_="result__url")
             # raw link is of format "/url?q=REAL-LINK&sa=..."
-            raw_link = self.base_url + link_tag.get('href')
+            # raw_link = self.base_url + link_tag.get('href')
+            raw_link = link_tag.get('href')
             re_find = re.findall("uddg=(.+)", raw_link)
-            if len(re_find) > 0 :
+            if len(re_find) > 0:
                 re_str = re_find[0]
                 re_str = re_str.replace("%3A", ":")
                 link = re_str.replace("%2F", "/")
                 link = link.replace("%2D", "-")
+            else:
+                link = raw_link
             rdict["links"] = link
 
         if return_type in (ReturnType.FULL, ReturnType.DESCRIPTION):
