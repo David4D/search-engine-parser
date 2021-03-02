@@ -24,7 +24,7 @@ class Search(BaseSearch):
         Parses Presearch for a search query.
         """
         # find all li tags
-        return soup.find_all('div', class_='ml-4 mb-6 max-w-2xl pr-4')
+        return soup.find_all('div', class_='ml-4 mb-4 md:mb-6 max-w-2xl pr-4')
 
     def parse_single_result(self, single_result, return_type=ReturnType.FULL, **kwargs):
         """
