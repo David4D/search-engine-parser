@@ -161,7 +161,9 @@ class BaseSearch:
         headers = {
             "Cache-Control": 'no-cache',
             "Connection": "keep-alive",
-            "User-Agent": utils.get_rand_user_agent()
+            "User-Agent": utils.get_rand_user_agent(),
+            "Accept-Language": "*",  # "fr,fr-FR;q=0.8,en-U;q=0.5"
+            # "Accept": "text/html"
         }
         return headers
 
